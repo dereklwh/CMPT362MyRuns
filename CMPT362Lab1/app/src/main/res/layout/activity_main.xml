@@ -47,7 +47,8 @@
             android:id="@+id/editName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Eg: John Doe" />
+            android:hint="Eg: John Doe"
+            android:inputType="text"/>
 
         <!-- Email -->
         <TextView
@@ -73,7 +74,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="phone"/>
+            android:inputType="phone"
+            android:hint="Your phone number"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -108,7 +110,7 @@
             android:text="Class "/>
 
         <EditText
-            android:id="@+id/Class"
+            android:id="@+id/editClass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Eg: 2024"
@@ -121,10 +123,11 @@
             android:text="Major "/>
 
         <EditText
-            android:id="@+id/Major"
+            android:id="@+id/editMajor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Your Major"/>
+            android:hint="Your major"
+            android:inputType="text"/>
 
     </LinearLayout>
 
