@@ -14,6 +14,7 @@ import android.widget.ImageView
 import android.widget.RadioGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
 import java.io.File
 import com.example.derek_huang_myruns1.Util
@@ -35,10 +36,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cancelButton: Button
     private lateinit var tempImgUri: Uri
     private lateinit var cameraResult: ActivityResultLauncher<Intent>
+    private lateinit var galleryLauncher: ActivityResultLauncher<Intent>
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var newImgUri: Uri
+    private lateinit var selectedImageUri: Uri
 
     private var saveCheck: Int = 0
+    private var picOption: Int = 0
 
 
     private val fileName = "profile_pic.jpg"
@@ -78,26 +82,57 @@ class MainActivity : AppCompatActivity() {
         if (saveCheck == 1){
             loadSavedData()
         }
-
         //Initialize cameraResult launcher (FROM LECTURE)
         cameraResult =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == RESULT_OK) {
                     val bitmap = Util.getBitmap(this, newImgUri)
                     imageProfile.setImageBitmap(bitmap)
+                    picOption = 1
+
                 }
             }
 
+        //initalize galleryLauncher
+        galleryLauncher =
+                registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {result ->
+                    if (result.resultCode == RESULT_OK) {
+                        val data: Intent? = result.data
+                        //selectedImageUri = data?.data
+                        selectedImageUri = data?.data ?: Uri.EMPTY
+
+                        if (selectedImageUri != null){
+                            val bitmap = Util.getBitmap(this, selectedImageUri)
+                            imageProfile.setImageBitmap(bitmap)
+                            picOption = 2
+                        }
+                    }
+                }
+
         //Set click listener for photoButton (FROM LECTURE)
         photoButton.setOnClickListener {
-            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, newImgUri)
-            cameraResult.launch(cameraIntent)
+            val options = arrayOf("Open Camera", "Select from Gallery")
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Pick Profile Picture")
+            builder.setItems(options) { _, which ->
+                when (which) {
+                    0 -> openCamera()
+                    1 -> openGallery()
+                }
+            }
+            builder.show()
         }
 
         //Set click listener for saveButton
         saveButton.setOnClickListener {
-            copyFile(newImgUri, profilePicFile)
+            //camera is used
+            if (picOption == 1){
+                copyFile(newImgUri, profilePicFile)
+            }
+            //gallery is used
+            else if (picOption == 2){
+                copyFile(selectedImageUri, profilePicFile)
+            }
             saveData()
             finish()
         }
@@ -180,5 +215,16 @@ class MainActivity : AppCompatActivity() {
             "Female" -> radioGroup.check(R.id.radioButtonFemale)
             else -> radioGroup.clearCheck()
         }
+    }
+
+    private fun openGallery() {
+        val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        galleryLauncher.launch(galleryIntent)
+    }
+
+    private fun openCamera() {
+        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, newImgUri)
+        cameraResult.launch(cameraIntent)
     }
 }

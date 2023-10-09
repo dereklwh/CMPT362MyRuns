@@ -6,29 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".TabMainActivity">
 
+    <TextView
+        android:id="@+id/my_runs_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MyRuns2"
+        android:textSize="20dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/my_runs_text">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start" />
+            android:text="START" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="History" />
+            android:text="HISTORY" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Settings" />
+            android:text="SETTINGS" />
     </com.google.android.material.tabs.TabLayout>
 
-    <androidx.viewpager.widget.ViewPager
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/tablayout"/>
 </RelativeLayout>

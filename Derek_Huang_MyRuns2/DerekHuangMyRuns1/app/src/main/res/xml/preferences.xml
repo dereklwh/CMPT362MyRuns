@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Account Preferences">
+
+        <!-- User Profile Preference -->
+        <Preference
+            android:key="user_profile"
+            android:title="User Profile"
+            android:summary="Name, Email, Class, etc"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground" />
+
+        <!-- Privacy Setting Preference -->
+        <Preference
+            android:key="privacy_setting"
+            android:title="Privacy Setting"
+            android:summary="Posting your records anonymously"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Additional Preferences">
+        <!-- Unit Preference -->
+        <Preference
+            android:key="unit_preference"
+            android:title="Unit Preference"
+            android:summary="Select the units"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground" />
+
+        <!-- Comments Preference -->
+        <Preference
+            android:key="comments"
+            android:title="Comments"
+            android:summary="Please enter your comments"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground" />
+
+    </PreferenceCategory>
+
+    <!-- Misc -->
+    <PreferenceCategory
+        android:title="Misc">
+
+        <!-- Webpage Preference -->
+        <Preference
+            android:key="webpage"
+            android:title="Webpage"
+            android:summary="https://www.sfu.ca/computing.html"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
