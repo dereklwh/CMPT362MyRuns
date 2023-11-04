@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="85001b1e-1357-4875-aa2a-7d715c4287bc" name="Changes" comment="" />
+    <list default="true" id="85001b1e-1357-4875-aa2a-7d715c4287bc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Derek_Huang_MyRuns2/DerekHuangMyRuns1/app/src/main/res/layout/preference_checkbox.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Derek_Huang_MyRuns2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Derek_Huang_MyRuns2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Derek_Huang_MyRuns2/DerekHuangMyRuns1.apk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Derek_Huang_MyRuns2/DerekHuangMyRuns1/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Derek_Huang_MyRuns2/DerekHuangMyRuns1/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Derek_Huang_MyRuns2/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/SettingsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Derek_Huang_MyRuns2/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/SettingsFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Derek_Huang_MyRuns2/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/TabMainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Derek_Huang_MyRuns2/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/TabMainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Derek_Huang_MyRuns2/DerekHuangMyRuns1/app/src/main/res/layout/fragment_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Derek_Huang_MyRuns2/DerekHuangMyRuns1/app/src/main/res/xml/preferences.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Derek_Huang_MyRuns2/DerekHuangMyRuns1/app/src/main/res/xml/preferences.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Derek_Huang_MyRuns2/readme.md.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Derek_Huang_MyRuns2/readme.md.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="2VuN916MaMCjhUmB2pM47TwHUYp" />
   <component name="ProjectViewState">
@@ -18,7 +36,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/Derek/AndroidStudioProjects/Derek_Huang_MyRuns1/DerekHuangMyRuns1"
+    "last_opened_file_path": "C:/Users/Derek/AndroidStudioProjects/StressMeter"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
