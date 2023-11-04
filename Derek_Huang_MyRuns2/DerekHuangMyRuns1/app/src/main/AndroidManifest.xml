@@ -6,6 +6,7 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -21,7 +22,7 @@
         <activity
             android:name=".TabMainActivity"
             android:exported="true"
-            android:label="@string/title_activity_tab_main"
+            android:label="Derek_Huang_MyRuns2"
             android:theme="@style/Theme.Derek_Huang_MyRuns1.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

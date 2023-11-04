@@ -19,7 +19,8 @@
             android:summary="Posting your records anonymously"
             android:clickable="true"
             android:focusable="true"
-            android:background="?android:attr/selectableItemBackground" />
+            android:background="?android:attr/selectableItemBackground"
+            android:widgetLayout="@layout/preference_checkbox" />
 
     </PreferenceCategory>
 
