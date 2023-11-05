@@ -15,4 +15,8 @@ class Converters {
     fun calendarToTimestamp(calendar: Calendar?): Long? {
         return calendar?.timeInMillis
     }
+    companion object {
+        fun milesToKilometers(miles: Double): Double = miles * 1.60934
+    }
+
 }

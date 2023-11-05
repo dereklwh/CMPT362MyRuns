@@ -33,6 +33,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".ManualEntryActivity" />
         <activity android:name=".MapActivity" />
+        <activity android:name=".EntryActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

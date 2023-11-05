@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -41,6 +42,8 @@ class ManualEntryActivity : AppCompatActivity() {
     private var heartRate: Int? = null
     private var comment: String? = null
 
+    private val selectedDateTime = Calendar.getInstance()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +53,7 @@ class ManualEntryActivity : AppCompatActivity() {
         cancelButton = findViewById(R.id.cancelButton)
         myListView = findViewById(R.id.myListView)
 
-        // Obtain the ViewModel - make sure to use the correct constructor for your ViewModelFactor
+        // Obtain the ViewModel
         database = ExerciseEntryDatabase.getInstance(this)
         databaseDao = database.exerciseEntryDatabaseDao
         repository = ExerciseRepository(databaseDao)
@@ -68,31 +71,25 @@ class ManualEntryActivity : AppCompatActivity() {
         cancelButton.setOnClickListener {
             finish()
         }
-        //TODO: save entries for mylab3
+
         saveButton.setOnClickListener {
+            val selectedActivityTypeId = intent.getIntExtra("SELECTED_ACTIVITY_TYPE_ID", -1)
+            //val selectedDateTime = Calendar.getInstance()
             val newEntry = ExerciseEntry(
                 id = 0L, // ID is auto-generated
                 inputType = 1,
-                activityType = 1, //activity that they chose previously
-                dateTime = Calendar.getInstance(),
+                activityType = selectedActivityTypeId,
+                dateTime = selectedDateTime,
                 duration = duration ?: 0.0,
                 distance = distance ?: 0.0,
+                calories = calories?.toDouble() ?: 0.0,
                 heartRate = heartRate?.toDouble() ?: 0.0,
                 comment = comment ?: ""
             )
             try {
                 viewModel.insertEntry(newEntry)
+                Toast.makeText(this, "Entry saved", Toast.LENGTH_SHORT).show()
                 Log.d("SAVED ENTRIES", "Entry inserted into database")
-                val allEntries = databaseDao.getAllEntries()
-                allEntries.observe(this, Observer { entries ->
-                    if (entries != null) {
-                        for (entry in entries) {
-                            Log.d("DatabaseCheck", "Entry: $entry")
-                        }
-                    }
-                })
-
-
             } catch (e: Exception) {
                 Log.e("SAVED ENTRIES", "Error inserting entry into database: ${e.message}")
             }
@@ -114,40 +111,33 @@ class ManualEntryActivity : AppCompatActivity() {
 
     //Inspired from layout kotlin
     private fun showDatePickerDialog() {
-        val calendar = Calendar.getInstance() // Create a Calendar instance to set the initial date
-
-        // Create a DatePickerDialog using an anonymous function as the onClickListener
         val datePickerDialog = DatePickerDialog(
             this,
             { _, year, monthOfYear, dayOfMonth ->
-                // Handle the selected date here
-                val selectedDate = Calendar.getInstance()
-                selectedDate.set(Calendar.YEAR, year)
-                selectedDate.set(Calendar.MONTH, monthOfYear)
-                selectedDate.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                // Update the class-level Calendar object
+                selectedDateTime.set(Calendar.YEAR, year)
+                selectedDateTime.set(Calendar.MONTH, monthOfYear)
+                selectedDateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth)
             },
-            calendar.get(Calendar.YEAR),
-            calendar.get(Calendar.MONTH),
-            calendar.get(Calendar.DAY_OF_MONTH)
+            selectedDateTime.get(Calendar.YEAR),
+            selectedDateTime.get(Calendar.MONTH),
+            selectedDateTime.get(Calendar.DAY_OF_MONTH)
         )
 
         datePickerDialog.show()
     }
+
     //inspired from layoutkotlin
     private fun showTimePickerDialog() {
-        val calendar = Calendar.getInstance() // Create a Calendar instance to set the initial time
-
-        // Create a TimePickerDialog using an anonymous function as the onTimeSetListener
         val timePickerDialog = TimePickerDialog(
             this,
             { _, hourOfDay, minute ->
-                // Handle the selected time here
-                val selectedTime = Calendar.getInstance()
-                selectedTime.set(Calendar.HOUR_OF_DAY, hourOfDay)
-                selectedTime.set(Calendar.MINUTE, minute)
+                // Update the class-level Calendar object
+                selectedDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay)
+                selectedDateTime.set(Calendar.MINUTE, minute)
             },
-            calendar.get(Calendar.HOUR_OF_DAY),
-            calendar.get(Calendar.MINUTE),
+            selectedDateTime.get(Calendar.HOUR_OF_DAY),
+            selectedDateTime.get(Calendar.MINUTE),
             false
         )
         timePickerDialog.show()

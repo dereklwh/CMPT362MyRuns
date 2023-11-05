@@ -1,30 +1,45 @@
 package com.example.derek_huang_myruns1
 
 import android.app.Dialog
-import android.content.DialogInterface
+import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
+import androidx.preference.PreferenceManager
 
-class UnitPreferenceDialogFragment : DialogFragment(), DialogInterface.OnClickListener{
+class UnitPreferenceDialogFragment : DialogFragment() {
+    private lateinit var radioGroup: RadioGroup
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        lateinit var ret: Dialog
-
         val builder = AlertDialog.Builder(requireActivity())
         val view = requireActivity().layoutInflater.inflate(R.layout.fragment_unit_preference_dialog, null)
+
+        radioGroup = view.findViewById(R.id.radioGroupUnit) // Ensure this ID matches your layout
+
+        // Shared preferences to remember what is clicked
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val currentUnit = sharedPreferences.getString("unit_preference", "Metric") // "Metric" as default
+        if (currentUnit == "Imperial") {
+            radioGroup.check(R.id.radioButtonImperial)
+        } else {
+            radioGroup.check(R.id.radioButtonMetric)
+        }
+
         builder.setView(view)
         builder.setTitle("Unit Preference")
-        builder.setNegativeButton("CANCEL", this)
-        ret = builder.create()
-        return ret
-    }
+        builder.setPositiveButton("OK") { _, _ ->
+            // Save the selected unit when the user clicks OK
+            val selectedUnit = if (radioGroup.checkedRadioButtonId == R.id.radioButtonMetric) "Metric" else "Imperial"
+            with(sharedPreferences.edit()) {
+                putString("unit_preference", selectedUnit)
+                apply()
+            }
+            Toast.makeText(activity, "Unit preference saved: $selectedUnit", Toast.LENGTH_SHORT).show()
+        }
+        builder.setNegativeButton("CANCEL", null)
 
-    override fun onClick(dialogInterface: DialogInterface, id: Int){
-        return
+        return builder.create()
     }
 }

@@ -58,10 +58,14 @@ class TabMainActivity : AppCompatActivity(){
 
     fun onStartButtonClicked(view: View?) {
         val inputTypeSpinner = findViewById<Spinner>(R.id.input_type_spinner)
+        val activityTypeSpinner: Spinner = findViewById(R.id.activity_type_spinner)
         val selectedInputType = inputTypeSpinner.selectedItem.toString()
+        val selectedActivityTypeId = activityTypeSpinner.selectedItemId.toInt()
 
         if (selectedInputType == "Manual Entry") {
-            val manualEntryIntent = Intent(this, ManualEntryActivity::class.java)
+            val manualEntryIntent = Intent(this, ManualEntryActivity::class.java).apply {
+                putExtra("SELECTED_ACTIVITY_TYPE_ID", selectedActivityTypeId)
+            }
             startActivity(manualEntryIntent)
         } else if (selectedInputType == "Automatic" || selectedInputType == "GPS") {
             val mapIntent = Intent(this, MapActivity::class.java)
