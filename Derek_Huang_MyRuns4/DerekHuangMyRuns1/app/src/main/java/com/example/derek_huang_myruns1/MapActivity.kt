@@ -3,14 +3,23 @@ package com.example.derek_huang_myruns1
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 
-class MapActivity : AppCompatActivity() {
+class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    lateinit var saveButton : Button
-    lateinit var cancelButton : Button
+    private lateinit var saveButton : Button
+    private lateinit var cancelButton : Button
+    private lateinit var mMap: GoogleMap
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
+
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.mapView)
+                as SupportMapFragment
+        mapFragment.getMapAsync(this)
 
         saveButton = findViewById(R.id.saveButton)
         cancelButton = findViewById(R.id.cancelButton)
@@ -24,4 +33,9 @@ class MapActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
+    }
+
 }

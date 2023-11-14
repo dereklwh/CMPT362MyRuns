@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -55,5 +56,5 @@ dependencies {
     implementation("androidx.room:room-ktx:2.4.1")
     kapt("androidx.room:room-compiler:2.4.1")
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
-
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
 }
