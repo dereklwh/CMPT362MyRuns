@@ -68,7 +68,9 @@ class TabMainActivity : AppCompatActivity(){
             }
             startActivity(manualEntryIntent)
         } else if (selectedInputType == "Automatic" || selectedInputType == "GPS") {
-            val mapIntent = Intent(this, MapActivity::class.java)
+            val mapIntent = Intent(this, MapActivity::class.java).apply {
+                putExtra("SELECTED_ACTIVITY_TYPE_ID", selectedActivityTypeId)
+            }
             startActivity(mapIntent)
         }
     }

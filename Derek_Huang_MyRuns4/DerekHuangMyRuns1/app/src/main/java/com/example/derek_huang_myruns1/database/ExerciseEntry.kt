@@ -4,6 +4,8 @@ import android.icu.text.SimpleDateFormat
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.android.gms.maps.model.LatLng
+import java.sql.Blob
 import java.util.Calendar
 import java.util.Locale
 
@@ -18,6 +20,10 @@ data class ExerciseEntry(
     val calories: Double,
     val heartRate: Double,
     val comment: String,
+    val locationList: ArrayList<LatLng> = arrayListOf(),
+    val avgPace: Double,
+    val avgSpeed: Double,
+    val climb: Double
 ) {
 
     // Add a method to format the date and time

@@ -7,11 +7,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- strings for map -->
     <string name="type_format">Type: %s</string>
-    <string name="avg_speed_format">Avg speed: %1$.2f m/s</string>
-    <string name="cur_speed_format">Cur speed: %1$.2f m/s</string>
-    <string name="climb_format">Climb: %1$.2f m</string>
+    <string name="avg_speed_format">Avg speed: %1$.2f km/hr</string>
+    <string name="cur_speed_format">Cur speed: %1$.2f km/hr</string>
+    <string name="climb_format">Climb: %1$.2f km</string>
     <string name="calorie_format">Calorie: %d</string>
-    <string name="distance_format">Distance: %1$.2f m</string>
+    <string name="distance_format">Distance: %1$.2f km</string>
 
     <!-- Input Type -->
 

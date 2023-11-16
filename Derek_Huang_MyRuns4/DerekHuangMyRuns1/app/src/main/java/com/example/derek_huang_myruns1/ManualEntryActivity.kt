@@ -41,6 +41,9 @@ class ManualEntryActivity : AppCompatActivity() {
     private var calories: Int? = null
     private var heartRate: Int? = null
     private var comment: String? = null
+    private var avgPace: Double? = null
+    private var avgSpeed: Double? = null
+    private var climb: Double? = null
 
     private val selectedDateTime = Calendar.getInstance()
 
@@ -84,7 +87,10 @@ class ManualEntryActivity : AppCompatActivity() {
                 distance = distance ?: 0.0,
                 calories = calories?.toDouble() ?: 0.0,
                 heartRate = heartRate?.toDouble() ?: 0.0,
-                comment = comment ?: ""
+                comment = comment ?: "",
+                avgPace = avgPace ?: 0.0,
+                avgSpeed = avgSpeed ?: 0.0,
+                climb = climb ?: 0.0
             )
             try {
                 viewModel.insertEntry(newEntry)
