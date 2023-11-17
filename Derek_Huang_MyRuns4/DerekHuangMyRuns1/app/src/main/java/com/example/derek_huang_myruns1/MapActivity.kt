@@ -105,6 +105,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val activityTypesArray = resources.getStringArray(R.array.ui_activity_type_spinner)
         val selectedActivityTypeId = intent.getIntExtra("SELECTED_ACTIVITY_TYPE_ID", -1)
+        val selectedInputTypeId = intent.getIntExtra("SELECTED_INPUT_TYPE_ID", -1)
         typeTextView.text = String.format(getString(R.string.type_format), activityTypesArray[selectedActivityTypeId])
 
         // Start TrackingService
@@ -119,7 +120,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             val locationArrayList = ArrayList(pathPoints)
             Log.d("LIST ENTRIES", locationArrayList.joinToString())
             val newEntry = ExerciseEntry(
-                inputType = 2,
+                inputType = selectedInputTypeId,
                 activityType = selectedActivityTypeId,
                 dateTime = selectedDateTime,
                 duration = timeElapsedInSeconds.toDouble() ?: 0.0,
@@ -214,6 +215,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         if (startTimeInMillis == 0L){
             startTimeInMillis = System.currentTimeMillis()
         }
+
         this.timeElapsedInSeconds = (System.currentTimeMillis() - startTimeInMillis) / 1000
         Log.d("SECONDS ELAPSED", "TIME ELAPSED: $timeElapsedInSeconds")
         avgSpeed = if (timeElapsedInSeconds > 0) totalDistance / (timeElapsedInSeconds/3600f) else 0f

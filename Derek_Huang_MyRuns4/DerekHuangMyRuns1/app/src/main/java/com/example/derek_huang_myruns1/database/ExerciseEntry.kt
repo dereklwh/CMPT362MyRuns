@@ -33,9 +33,9 @@ data class ExerciseEntry(
     }
     fun getEntryTypeString(): String {
         return when (inputType) {
-            1 -> "Manual Entry"
-            2 -> "GPS"
-            3 -> "Automatic"
+            0 -> "Manual Entry"
+            1 -> "GPS"
+            2 -> "Automatic"
             else -> "Unknown"
         }
     }

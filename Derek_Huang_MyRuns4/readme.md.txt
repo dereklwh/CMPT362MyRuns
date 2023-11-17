@@ -1,3 +1,7 @@
+# My Runs Assignment 4
+- took inspiration from where_am_i and here_i_am demos.
+- time is only tracked when location is updated
+
 # My Runs Assignment 3
 - took inspiration from room demo for: ExerciseEntryDatabase.kt, ExerciseViewModel.kt, and ExerciseEntryDatabase.kt
 - Unit conversion in history fragment only takes place if app is reset

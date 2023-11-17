@@ -80,7 +80,7 @@ class ManualEntryActivity : AppCompatActivity() {
             //val selectedDateTime = Calendar.getInstance()
             val newEntry = ExerciseEntry(
                 id = 0L, // ID is auto-generated
-                inputType = 1,
+                inputType = 0,
                 activityType = selectedActivityTypeId,
                 dateTime = selectedDateTime,
                 duration = duration ?: 0.0,

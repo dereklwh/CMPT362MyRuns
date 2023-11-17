@@ -60,11 +60,23 @@ class HistoryFragment : Fragment(), OnEntryClickListener {
 
     override fun onEntryClick(entry: ExerciseEntry) {
         Log.d("BUTTON CLICKED", "CLICKED ON ENTRY: ${entry.id}")
-        //OPEN ENTRY ACTIVITY
-        val intent = Intent(context, EntryActivity::class.java).apply {
-            putExtra("ENTRY_ID", entry.id)
+
+        when (entry.inputType) {
+            0 -> { // Manual Entry
+                val intent = Intent(context, EntryActivity::class.java).apply {
+                    putExtra("ENTRY_ID", entry.id)
+                }
+                startActivity(intent)
+            }
+            1, 2 -> { // GPS or Automatic
+                val intent = Intent(context, DisplayMapActivity::class.java).apply {
+                    putExtra("ENTRY_ID", entry.id)
+                    // If you have the list of LatLng points directly available, you can pass them here
+                    // putExtra("LOCATION_LIST", entry.locationList)
+                }
+                startActivity(intent)
+            }
         }
-        startActivity(intent)
     }
     override fun onResume() {
         super.onResume()
