@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RadioGroup
+        android:id="@+id/radioGroupUnit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioButtonMetric"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="Metric (Kilometres)"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonImperial"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="Imperial (Miles)"/>
+    </RadioGroup>
+</LinearLayout>
