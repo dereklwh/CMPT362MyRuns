@@ -14,6 +14,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
+import com.example.derek_huang_myruns1.database.Converters
 import com.example.derek_huang_myruns1.database.ExerciseEntry
 import com.example.derek_huang_myruns1.database.ExerciseEntryDatabase
 import com.example.derek_huang_myruns1.database.ExerciseEntryDatabaseDao
@@ -160,7 +162,14 @@ class ManualEntryActivity : AppCompatActivity() {
             val enteredText = input.text.toString()
             when (title) {
                 "Duration" -> duration = enteredText.toDoubleOrNull()
-                "Distance" -> distance = enteredText.toDoubleOrNull()
+                "Distance" -> {
+                    val unitPreference = getUnitPreference()
+                    distance = if (unitPreference == "Imperial") {
+                        Converters.milesToKilometers(enteredText.toDoubleOrNull() ?: 0.0)
+                    } else {
+                        enteredText.toDoubleOrNull()
+                    }
+                }
                 "Calories" -> calories = enteredText.toIntOrNull()
                 "Heart Rate" -> heartRate = enteredText.toIntOrNull()
             }
@@ -194,5 +203,10 @@ class ManualEntryActivity : AppCompatActivity() {
         }
 
         builder.show()
+    }
+
+    private fun getUnitPreference(): String {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        return sharedPreferences.getString("unit_preference", "Kilometers") ?: "Kilometers"
     }
 }

@@ -135,7 +135,7 @@ class DisplayMapActivity : AppCompatActivity() {
             //speed is already in km/h
             speed
         }
-        return String.format("%.2f %s/h", speedInPreferredUnit, if (unitPreference == "Imperial") "mph" else "km/h")
+        return String.format("%.2f %s", speedInPreferredUnit, if (unitPreference == "Imperial") "mph" else "km/h")
     }
 
     private fun formatDistance(distance: Float, unitPreference: String): String {

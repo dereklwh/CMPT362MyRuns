@@ -34,7 +34,7 @@
         <activity
             android:name=".TabMainActivity"
             android:exported="true"
-            android:label="Derek_Huang_MyRuns3"
+            android:label="Derek_Huang_MyRuns5"
             android:theme="@style/Theme.Derek_Huang_MyRuns1.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

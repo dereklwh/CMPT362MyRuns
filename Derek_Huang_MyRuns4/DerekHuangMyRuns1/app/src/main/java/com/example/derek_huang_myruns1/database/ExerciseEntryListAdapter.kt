@@ -40,11 +40,11 @@ class ExerciseEntryListAdapter(private val onEntryClickListener: OnEntryClickLis
             val formattedDuration = entry.getFormattedDuration()
 
             // Determine the distance based on the preference
-            val distance = if (unitPreference == "Imperial") {
-                "${entry.distance} Miles"
+            val distance = if (unitPreference == "Metric") {
+                String.format("%.2f Kilometers", entry.distance)
             } else {
-                val distanceInKilometers = Converters.milesToKilometers(entry.distance)
-                "${distanceInKilometers} Kilometers"
+                val distanceInMiles = Converters.kilometersToMiles(entry.distance)
+                String.format("%.2f Miles", distanceInMiles)
             }
 
             entryTextView.text = "$entryTypeString, $activityTypeString, $formattedDateTime\n$distance, $formattedDuration"

@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import com.example.derek_huang_myruns1.database.ExerciseEntry
 import com.example.derek_huang_myruns1.database.ExerciseEntryDatabase
 import com.example.derek_huang_myruns1.database.ExerciseEntryDatabaseDao
@@ -106,12 +107,46 @@ class DisplayMapActivity : AppCompatActivity() {
         }
     }
     private fun updateUI(entry: ExerciseEntry) {
+        val unitPreference = getUnitPreference()
+
+        val formattedAvgSpeed = formatSpeed(entry.avgSpeed.toFloat(), unitPreference)
+        val formattedDistance = formatDistance(entry.distance.toFloat(), unitPreference)
+
         findViewById<TextView>(R.id.mapType).text = String.format(getString(R.string.type_format), entry.getActivityTypeString())
-        findViewById<TextView>(R.id.mapAvgSpeed).text = String.format(getString(R.string.avg_speed_format), entry.avgSpeed)
+        findViewById<TextView>(R.id.mapAvgSpeed).text = formattedAvgSpeed
         findViewById<TextView>(R.id.mapCurSpeed).text = String.format("Cur speed: N/A")
         findViewById<TextView>(R.id.mapClimb).text = String.format(getString(R.string.climb_format), entry.climb)
         findViewById<TextView>(R.id.mapCalorie).text = String.format(getString(R.string.calorie_format), entry.calories.toInt())
-        findViewById<TextView>(R.id.mapDistance).text = String.format(getString(R.string.distance_format), entry.distance)
+        findViewById<TextView>(R.id.mapDistance).text = formattedDistance
+    }
+
+
+    private fun getUnitPreference(): String {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        return sharedPreferences.getString("unit_preference", "Miles") ?: "Miles"
+    }
+
+
+    private fun formatSpeed(speed: Float, unitPreference: String): String {
+        val speedInPreferredUnit = if (unitPreference == "Imperial") {
+            //convert speed to miles per hour
+            speed / 1.60934f
+        } else {
+            //speed is already in km/h
+            speed
+        }
+        return String.format("%.2f %s/h", speedInPreferredUnit, if (unitPreference == "Imperial") "mph" else "km/h")
+    }
+
+    private fun formatDistance(distance: Float, unitPreference: String): String {
+        val distanceInPreferredUnit = if (unitPreference == "Imperial") {
+            //convert distance to miles
+            distance / 1.60934f
+        } else {
+            //distance is already in kilometers
+            distance
+        }
+        return String.format("%.2f %s", distanceInPreferredUnit, if (unitPreference == "Imperial") "Miles" else "Kilometers")
     }
     override fun onDestroy() {
         super.onDestroy()

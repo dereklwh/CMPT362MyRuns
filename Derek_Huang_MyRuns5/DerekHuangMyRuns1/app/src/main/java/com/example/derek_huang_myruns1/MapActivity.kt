@@ -107,10 +107,18 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         val activityTypesArray = resources.getStringArray(R.array.ui_activity_type_spinner)
         val selectedActivityTypeId = intent.getIntExtra("SELECTED_ACTIVITY_TYPE_ID", -1)
         val selectedInputTypeId = intent.getIntExtra("SELECTED_INPUT_TYPE_ID", -1)
-        typeTextView.text = String.format(getString(R.string.type_format), activityTypesArray[selectedActivityTypeId])
+        //typeTextView.text = String.format(getString(R.string.type_format), activityTypesArray[selectedActivityTypeId])
 
         // Start TrackingService
         startTrackingService()
+
+        if (selectedInputTypeId == 2) { // Automatic
+            TrackingService.activityTypeUpdates.observe(this, Observer { activityType ->
+                typeTextView.text = String.format(getString(R.string.type_format), activityType)
+            })
+        } else if (selectedInputTypeId == 1) { // GPS
+            typeTextView.text = String.format(getString(R.string.type_format), activityTypesArray[selectedActivityTypeId])
+        }
 
         //Button Functionality
         cancelButton.setOnClickListener {
@@ -119,20 +127,29 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         //TODO: save entries for mylab3
         saveButton.setOnClickListener {
             val locationArrayList = ArrayList(pathPoints)
+
+            // Determine activity type based on input type
+            val activityType = if (selectedInputTypeId == 2) { // Automatic
+                // Convert the activity type string to its corresponding integer ID
+                convertActivityTypeToInt(TrackingService.activityTypeUpdates.value)
+            } else { // GPS
+                selectedActivityTypeId
+            }
+
             Log.d("LIST ENTRIES", locationArrayList.joinToString())
             val newEntry = ExerciseEntry(
                 inputType = selectedInputTypeId,
-                activityType = selectedActivityTypeId,
+                activityType = activityType,
                 dateTime = selectedDateTime,
                 duration = timeElapsedInSeconds.toDouble() ?: 0.0,
                 distance = totalDistance.toDouble() ?: 0.0,
                 calories = caloriesBurned.toDouble() ?: 0.0,
-                heartRate = heartRate ?: 0.0, // dont have
-                comment = comment ?: "", // dont have
+                heartRate = heartRate ?: 0.0,
+                comment = comment ?: "",
                 locationList = locationArrayList,
-                avgPace = avgPace ?: 0.0, //dont have
+                avgPace = avgPace ?: 0.0,
                 avgSpeed = avgSpeed.toDouble() ?: 0.0,
-                climb = climb ?: 0.0 //dont have?
+                climb = climb ?: 0.0
             )
             try {
                 viewModel.insertEntry(newEntry)
@@ -291,7 +308,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             //speed is already in km/h
             speed
         }
-        return String.format("%.2f %s/h", speedInPreferredUnit, if (unitPreference == "Imperial") "mph" else "km/h")
+        return String.format("%.2f %s", speedInPreferredUnit, if (unitPreference == "Imperial") "mph" else "km/h")
     }
 
     private fun formatDistance(distance: Float, unitPreference: String): String {
@@ -308,5 +325,15 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onDestroy() {
         stopTrackingService()
         super.onDestroy()
+    }
+
+    // Helper function to convert activity type string to integer ID
+    private fun convertActivityTypeToInt(activityType: String?): Int {
+        return when (activityType) {
+            "Running" -> 0
+            "Walking" -> 1
+            "Standing" -> 2
+            else -> -1
+        }
     }
 }

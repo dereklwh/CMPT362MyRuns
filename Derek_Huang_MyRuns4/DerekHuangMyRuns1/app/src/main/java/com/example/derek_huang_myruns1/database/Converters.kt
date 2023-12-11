@@ -24,7 +24,13 @@ class Converters {
         return calendar?.timeInMillis
     }
     companion object {
-        fun milesToKilometers(miles: Double): Double = miles * 1.60934
+        fun kilometersToMiles(kilometers: Double): Double {
+            return kilometers / 1.60934
+        }
+
+        fun milesToKilometers(miles: Double): Double {
+            return miles * 1.60934
+        }
     }
 
     @TypeConverter

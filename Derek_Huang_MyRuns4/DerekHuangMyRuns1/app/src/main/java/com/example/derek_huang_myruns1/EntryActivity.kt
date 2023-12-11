@@ -71,17 +71,17 @@ class EntryActivity : AppCompatActivity() {
     }
 
 
-    private fun formatDistance(distanceMiles: Double): String {
+    private fun formatDistance(distanceKilometers: Double): String {
         val unitPreference = sharedPreferences.getString("unit_preference", "Miles") ?: "Miles"
         val distance: Double
         val unit: String
 
-        if (unitPreference == "Imperial") {
-            distance = distanceMiles
-            unit = "Miles"
-        } else { // Assuming "Kilometers" as the only other option
-            distance = distanceMiles * 1.60934
+        if (unitPreference == "Metric") {
+            distance = distanceKilometers
             unit = "Kilometers"
+        } else { // Assuming "Kilometers" as the only other option
+            distance = distanceKilometers / 1.60934
+            unit = "Miles"
         }
 
         return String.format("%.2f %s", distance, unit)

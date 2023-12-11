@@ -15,8 +15,8 @@ data class ExerciseEntry(
     val inputType: Int,
     val activityType: Int,
     val dateTime: Calendar,
-    val duration: Double,
-    val distance: Double,
+    val duration: Double, //seconds
+    val distance: Double, //kms
     val calories: Double,
     val heartRate: Double,
     val comment: String,
@@ -62,8 +62,9 @@ data class ExerciseEntry(
     }
     //format duration to mins and secs
     fun getFormattedDuration(): String {
-        val minutes = duration.toInt() // Get the integer part for minutes
-        val seconds = ((duration - minutes) * 60).toInt() // Convert the fractional part to seconds
-        return "${minutes} mins ${seconds} secs"
+        val minutes = duration.toInt() / 60
+        val seconds = duration.toInt() % 60
+
+        return String.format("%02d mins %02d secs", minutes, seconds)
     }
 }

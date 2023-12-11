@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85001b1e-1357-4875-aa2a-7d715c4287bc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/DerekHuangMyRuns1/app/src/main/res/layout/preference_checkbox.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DerekHuangMyRuns1.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DerekHuangMyRuns1/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DerekHuangMyRuns1/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/SettingsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/SettingsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/TabMainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/TabMainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DerekHuangMyRuns1/app/src/main/res/layout/fragment_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DerekHuangMyRuns1/app/src/main/res/xml/preferences.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DerekHuangMyRuns1/app/src/main/res/xml/preferences.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md.txt" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Derek_Huang_MyRuns4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Derek_Huang_MyRuns4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Derek_Huang_MyRuns4/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/DisplayMapActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Derek_Huang_MyRuns4/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/DisplayMapActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Derek_Huang_MyRuns4/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/EntryActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Derek_Huang_MyRuns4/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/EntryActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Derek_Huang_MyRuns4/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/ManualEntryActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Derek_Huang_MyRuns4/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/ManualEntryActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Derek_Huang_MyRuns4/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/MapActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Derek_Huang_MyRuns4/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/MapActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Derek_Huang_MyRuns4/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/database/Converters.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Derek_Huang_MyRuns4/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/database/Converters.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Derek_Huang_MyRuns4/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/database/ExerciseEntry.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Derek_Huang_MyRuns4/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/database/ExerciseEntry.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Derek_Huang_MyRuns4/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/database/ExerciseEntryListAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Derek_Huang_MyRuns4/DerekHuangMyRuns1/app/src/main/java/com/example/derek_huang_myruns1/database/ExerciseEntryListAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Derek_Huang_MyRuns4/DerekHuangMyRuns3.apk" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +34,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/Derek/AndroidStudioProjects/CMPT362/Derek_Huang_MyRuns2"
+    "last_opened_file_path": "C:/Users/Derek/AndroidStudioProjects/CMPT362/Derek_Huang_MyRuns3/DerekHuangMyRuns1"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

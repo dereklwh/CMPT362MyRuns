@@ -18,6 +18,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import com.example.derek_huang_myruns1.database.ExerciseEntry
 import com.example.derek_huang_myruns1.database.ExerciseEntryDatabase
 import com.example.derek_huang_myruns1.database.ExerciseEntryDatabaseDao
@@ -265,10 +266,43 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun updateUI(avgSpeed: Float, curSpeed: Float, calories: Float, distance: Float) {
-        avgSpeedTextView.text = String.format(getString(R.string.avg_speed_format), avgSpeed)
-        curSpeedTextView.text = String.format(getString(R.string.cur_speed_format), curSpeed)
+        val unitPreference = getUnitPreference()
+        val formattedAvgSpeed = formatSpeed(avgSpeed, unitPreference)
+        val formattedCurSpeed = formatSpeed(curSpeed, unitPreference)
+        val formattedDistance = formatDistance(distance, unitPreference)
+
+        avgSpeedTextView.text = formattedAvgSpeed
+        curSpeedTextView.text = formattedCurSpeed
         calorieTextView.text = String.format(getString(R.string.calorie_format), calories.toInt())
-        distanceTextView.text = String.format(getString(R.string.distance_format), distance)
+        distanceTextView.text = formattedDistance
+    }
+
+
+    private fun getUnitPreference(): String {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        return sharedPreferences.getString("unit_preference", "Miles") ?: "Miles"
+    }
+
+    private fun formatSpeed(speed: Float, unitPreference: String): String {
+        val speedInPreferredUnit = if (unitPreference == "Imperial") {
+            //convert speed to miles per hour
+            speed / 1.60934f
+        } else {
+            //speed is already in km/h
+            speed
+        }
+        return String.format("%.2f %s/h", speedInPreferredUnit, if (unitPreference == "Imperial") "mph" else "km/h")
+    }
+
+    private fun formatDistance(distance: Float, unitPreference: String): String {
+        val distanceInPreferredUnit = if (unitPreference == "Imperial") {
+            //convert distance to miles
+            distance / 1.60934f
+        } else {
+            //distance is already in kilometers
+            distance
+        }
+        return String.format("%.2f %s", distanceInPreferredUnit, if (unitPreference == "Imperial") "Miles" else "Kilometers")
     }
 
     override fun onDestroy() {
