@@ -12,7 +12,7 @@ MyRuns is a comprehensive activity tracking app developed as a semester-long pro
 ## Installation
 The app is not available on the Android Store, but you can download the APK file directly from this repository. Follow these steps:
 
-1. Download the APK file from [here](URL_of_the_APK_file_in_the_repository).
+1. Download the APK file from [here](https://github.com/dereklwh/CMPT362MyRuns/blob/main/Derek_Huang_MyRuns5/DerekHuangMyRuns5.apk).
 2. Install the APK on your Android device. Make sure to allow installation from unknown sources in your device settings if necessary.
 
 Alternatively, you can run the app through an Android Studio emulator by following these steps:
